@@ -47,7 +47,7 @@ namespace MyBlueprint.ResxConverter
                     keyValuePairs[key] = value;
                 }
             }
-            var outputFileName = "ResourceProvider.en-ca.resx";
+            var outputFileName = "ResourceProvider.resx";
             var outputFullPath = Path.Combine(options.OutputDirectory, outputFileName);
             using (var resx = new ResXResourceWriter(outputFullPath))
             {
