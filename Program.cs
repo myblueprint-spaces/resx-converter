@@ -55,7 +55,6 @@ namespace MyBlueprint.ResxConverter
                 {
                     resx.AddResource(item.Key, item.Value);
                 }
-                resx.Generate();
             }
             Environment.Exit(0);
             return ValueTask.CompletedTask;
