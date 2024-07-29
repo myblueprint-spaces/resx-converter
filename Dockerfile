@@ -4,7 +4,7 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 as build-env
 # Copy everything and publish the release (publish implicitly restores and builds)
 WORKDIR /app
 COPY . ./
-RUN dotnet publish ./Myblueprint.ResxConverter/MyBlueprint.ResxConverter.csproj -c Release -o out --no-self-contained
+RUN dotnet publish ./resx-converter/MyBlueprint.ResxConverter.csproj -c Release -o out --no-self-contained
 
 # Label the container
 LABEL maintainer="admin"
