@@ -25,8 +25,8 @@ namespace MyBlueprint.ResxConverter
                     Environment.Exit(2);
                 });
 
-             parser.WithParsed(
-                 options => ConvertToResX(options));
+            parser.WithParsed(
+                options => ConvertToResX(options));
 
             await host.RunAsync();
         }
