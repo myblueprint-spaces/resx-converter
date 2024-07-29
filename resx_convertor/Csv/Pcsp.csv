@@ -1,0 +1,109 @@
+ Emails.Server_SignOffRequest, Greeting, N'Hi
+ Emails.Server_SignOffRequest, Subject, N'Sign off on your childs course selections!
+ Emails.Server_SignOffRequest, Header, N'Sign off on your childs course selections!
+ Emails.Server_SignOffRequest, Intro1, N'has requested you sign off on their course selections.
+ Emails.Server_SignOffRequest, Intro2, N'To approve these choices, you must review the information below and click Sign Off on Course Selection.
+ Emails.Server_SignOffRequest, StudentName, N'Student Name:
+ Emails.Server_SignOffRequest, StudentSchool, N'Student School:
+ Emails.Server_SignOffRequest, StudentComment, N'Student Comment:
+ Emails.Server_SignOffRequest, N'ote, N'Note: To view additional course information and any guidance messages, please scroll to the bottom of this email.
+ Emails.Server_SignOffRequest, CoursesSubmitted, N'Courses Submitted:
+ Emails.Server_SignOffRequest, AlternateCoursesSubmitted, N'Alternate Courses Submitted:
+ Emails.Server_SignOffRequest, CourseSubmissionIssues, N'Course Submission Issues:
+ Emails.Server_SignOffRequest, Approve, N'Sign Off Course Selections
+ Emails.Server_SignOffRequest, Reject, N'Reject Request
+ Emails.Server_SignOffRequest, RejectInquiry, N'Dont approve of these course selections?
+ Emails.Server_SignOffRequest, RejectInfo, N'If you reject this request, please follow up with the schools guidance counsellor or the students classroom teacher about next steps.
+ Emails.Server_SignOffRequest, SchoolMessages, N'School Message(s):
+ Emails.Server_SignOffRequest, N'otReturning, N'Not Returning:
+ Emails.Server_SignOffRequest, OtherIssues, N'Other Issues:
+ Emails.Server_SignOffRequest, SlotIssue_MissingPrerequisite, N'Prerequisite not met
+ Emails.Server_SignOffRequest, SlotIssue_MissingCorequisite, N'Corequisite not met
+ Emails.Server_SignOffRequest, SlotIssue_DuplicateCourse, N'Duplicate course
+ Emails.Server_SignOffRequest, SlotIssue_NoLongerOffered, N'Course no longer offered
+ Emails.Server_SignOffRequest, SlotIssue_CourseFull, N'This Limited Enrollment course is full
+ Emails.Server_SignOffRequest, SlotIssue_GridSlotMismatch, N'This is no longer a valid course. Please replace with another one
+ Emails.Server_SignOffRequest, SubmissionIssue_NoLongerOffered, N'Course No Longer Offered
+ Emails.Server_SignOffRequest, SubmissionIssue_NotEnoughCredits, N'Minimum Credit ("Full Course Load") Not Met
+ Emails.Server_SignOffRequest, SubmissionIssue_MandatoryAlternates, N'Required Alternate Courses not met
+ Emails.Server_SignOffRequest, SubmissionIssue_TooManyCredits, N'Maximum Total Credits exceeded
+ Emails.Server_SignOffRequest, SubmissionIssue_ExceedMaxTotalCredits, N'Maximum Total Credits exceeded
+ Emails.Server_SignOffRequest, SubmissionIssue_Duplicated, N'Missing Prerequisites or Corequisites
+ Emails.Server_SignOffRequest, SubmissionIssue_MissingPreOrCoRequisite, N'Missing Prerequisites or Corequisites
+ Emails.Server_SignOffRequest, SubmissionIssue_CourseFull, N'Full Course
+ Emails.Server_SignOffRequest, SubmissionIssue_GridSlotMismatch, N'
+ Emails.Server_StudentSubmitted, Subject, N'Course Submission Successful
+ Emails.Server_StudentSubmitted, Header, N'Course submission successful
+ Emails.Server_StudentSubmitted, Greeting, N'Hi
+ Emails.Server_StudentSubmitted, Point1, N'You successfully submitted your courses on
+ Emails.Server_StudentSubmitted, Point2, N'Click below to view your account.
+ Emails.Server_StudentSubmitted, ViewAccount, N'View Account
+ Emails.Server_AdminSubmitted, Subject, N'Course Submission Successful
+ Emails.Server_AdminSubmitted, Header, N'Course submission successful
+ Emails.Server_AdminSubmitted, Greeting, N'Hi
+ Emails.Server_AdminSubmitted, Point1, N'Your courses have been successfully submitted on your behalf by {0} on
+ Emails.Server_AdminSubmitted, Point2, N'Click below to view your account.
+ Emails.Server_AdminSubmitted, ViewAccount, N'View Account
+ Emails.Server_ResubmissionRequested, Subject, N'Resubmit Your Courses
+ Emails.Server_ResubmissionRequested, Header, N'Resubmit your courses
+ Emails.Server_ResubmissionRequested, Greeting, N'Hi
+ Emails.Server_ResubmissionRequested, Point1, N'{0} has re-opened your course selections. Please log in and resubmit your courses.
+ Emails.Server_ResubmissionRequested, Point2, N'Click below to view your account.
+ Emails.Server_ResubmissionRequested, ViewAccount, N'View Account
+ CourseForecastingReport, Header0, N'Code
+ CourseForecastingReport, Header1, N'Course Name
+ CourseForecastingReport, Header2, N'Grade
+ CourseForecastingReport, Header3, N'Credits
+ CourseForecastingReport, Header4, N'Planned
+ CourseForecastingReport, Header5, N'Submitted
+ CourseForecastingReport, Header6, N'Exported
+ CourseForecastingReport, Header7, N'Alternate
+ CourseForecastingReport, Header8, N'Students
+ CourseForecastingReport, FileName, N'Course Forecasting
+ CourseForecastingReport, ExcelSheetName, N'Course Forecasting
+ CourseForecastingStudentsReport,Header0, N'Code
+ CourseForecastingStudentsReport,Header1, N'Grade
+ CourseForecastingStudentsReport,Header2, N'First Name
+ CourseForecastingStudentsReport,Header3, N'Last Name
+ CourseForecastingStudentsReport,Header4, N'School Name
+ CourseForecastingStudentsReport,Header5, N'Last Login
+ CourseForecastingStudentsReport,Header6, N'Course Selection
+ CourseForecastingStudentsReport,PendingApproval, N'Pending Approval
+ CourseForecastingStudentsReport,Awaiting, N'Awaiting Submission
+ CourseForecastingStudentsReport,Reallowed, N'Reallowed
+ CourseForecastingStudentsReport,NotCompleting, N'Not Completing
+ CourseForecastingStudentsReport,PendingExport, N'Pending Export
+ CourseForecastingStudentsReport,Exported, N'Exported
+ CourseForecastingStudentsReport, FileName, N'Course Forecasting
+ CourseForecastingStudentsReport, ExcelSheetName, N'Course Forecasting
+ SubmissionProgressReport,Header0, N'High School
+ SubmissionProgressReport,Header1, N'Not Submitted Gr.
+ SubmissionProgressReport,Header2, N'Submitted Gr.
+ SubmissionProgressReport,Header3, N'Not Completing Gr.
+ SubmissionProgressReport,Header4, N'Not Returning Gr.
+ SubmissionProgressReport,FileName, N'Submission Progress Report
+ SubmissionProgressReport,ExcelSheetName, N'Submission Progress
+ SubmissionProgressStudentsReport,Header0, N'Last Name
+ SubmissionProgressStudentsReport,Header1, N'First Name
+ SubmissionProgressStudentsReport,Header2, N'Grade
+ SubmissionProgressStudentsReport,Header3, N'Last Login
+ SubmissionProgressStudentsReport,Header4, N'Course Selection
+ SubmissionProgressStudentsReport,FileName, N'Submission Progress
+ SubmissionProgressStudentsReport,ExcelSheetName, N'Submissions
+ SubmissionProgressStudentsReport,PendingApproval, N'Pending Approval
+ SubmissionProgressStudentsReport,Awaiting, N'Awaiting Submission
+ SubmissionProgressStudentsReport,Reallowed, N'Reallowed
+ SubmissionProgressStudentsReport,NotCompleting, N'Not Completing
+ SubmissionProgressStudentsReport,PendingExport, N'Pending Export
+ SubmissionNotReturningReport,FileName, N'Not Returning
+ SubmissionNotReturningReport,ExcelSheetName, N'Not Returning
+ SubmissionNotReturningReport,ZipFileName, N'Not Returning - All Schools
+ SubmissionNotReturningReport,Destination, N'Destination
+ SubmissionNotReturningReport,Total, N'Total
+ SubmissionNotReturningStudentsReport,FileName, N'Not Returning
+ SubmissionNotReturningStudentsReport,ExcelSheetName, N'Not Returning
+ SubmissionNotReturningStudentsReport,Header0, N'Last Name
+ SubmissionNotReturningStudentsReport,Header1, N'First Name
+ SubmissionNotReturningStudentsReport,Header2, N'Grade
+ SubmissionNotReturningStudentsReport,Header3, N'Last Login
+ SubmissionNotReturningStudentsReport,Header4, N'Destination
