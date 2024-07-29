@@ -54,8 +54,6 @@ namespace MyBlueprint.ResxConverter
                 foreach (var item in keyValuePairs)
                 {
                     resx.AddResource(item.Key, item.Value);
-
-
                 }
                 resx.Generate();
             }
