@@ -1,17 +1,10 @@
 ﻿using CommandLine;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ResX_convertor
+namespace MyBlueprint.ResxConverter
 {
     public class ActionInputs
     {
-        string _repositoryName = null!;
-        string _branchName = null!;
-
         [Option('d', "dir",
             Required = true,
             HelpText = "Input Csv file Directory that you want to convert.")]

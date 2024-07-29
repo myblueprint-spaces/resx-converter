@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35017.193
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResX_convertor", "ResX_convertor.csproj", "{F8F6A289-253F-4F39-94A2-938453B23D4D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBlueprint.ResxConverter", "MyBlueprint.ResxConverter.csproj", "{F8F6A289-253F-4F39-94A2-938453B23D4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

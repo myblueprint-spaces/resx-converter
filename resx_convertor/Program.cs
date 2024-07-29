@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 using CommandLine;
 using static CommandLine.Parser;
 
-namespace ResX_convertor
+namespace MyBlueprint.ResxConverter
 {
     public class Program
     {
@@ -25,13 +25,13 @@ namespace ResX_convertor
                     Environment.Exit(2);
                 });
 
-            await parser.WithParsedAsync(
-                async options => await ConvertToResX(options));
+             parser.WithParsed(
+                 options => ConvertToResX(options));
 
             await host.RunAsync();
         }
 
-        public static async ValueTask ConvertToResX(ActionInputs options)
+        public static ValueTask ConvertToResX(ActionInputs options)
         {
             var fileName = "PcspResources.Csv";
             var fullPath = Path.Combine(options.InputDirectory, fileName);
@@ -60,10 +60,8 @@ namespace ResX_convertor
                 resx.Generate();
                 resx.Close();
             }
-
-            Console.WriteLine("Done");
-            await ValueTask.CompletedTask;
             Environment.Exit(0);
+            return ValueTask.CompletedTask;
         }
     }
 }
