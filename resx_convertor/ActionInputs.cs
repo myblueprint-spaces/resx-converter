@@ -12,14 +12,6 @@ namespace ResX_convertor
         string _repositoryName = null!;
         string _branchName = null!;
 
-        public ActionInputs()
-        {
-            if (Environment.GetEnvironmentVariable("GREETINGS") is { Length: > 0 } greetings)
-            {
-                Console.WriteLine(greetings);
-            }
-        }
-
         [Option('d', "dir",
             Required = true,
             HelpText = "Input Csv file Directory that you want to convert.")]
