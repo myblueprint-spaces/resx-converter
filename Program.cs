@@ -47,9 +47,9 @@ namespace MyBlueprint.ResxConverter
                     keyValuePairs[key] = value;
                 }
             }
-            var outputFileName = "PcspResources.resx";
+            var outputFileName = "ResourceProvider.en-ca.resx";
             var outputFullPath = Path.Combine(options.OutputDirectory, outputFileName);
-            using (ResXResourceWriter resx = new ResXResourceWriter(outputFullPath))
+            using (var resx = new ResXResourceWriter(outputFullPath))
             {
                 foreach (var item in keyValuePairs)
                 {
