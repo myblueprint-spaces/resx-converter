@@ -33,7 +33,7 @@ namespace MyBlueprint.ResxConverter
 
         public static ValueTask ConvertToResX(ActionInputs options)
         {
-            var fileName = "PcspResources.Csv";
+            var fileName = "PcspResources.csv";
             var fullPath = Path.Combine(options.InputDirectory, fileName);
             Dictionary<string, string> keyValuePairs = new Dictionary<string, string>();
             var allLines = File.ReadAllLines(fullPath);
