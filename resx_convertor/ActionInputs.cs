@@ -5,14 +5,14 @@ namespace MyBlueprint.ResxConverter
 {
     public class ActionInputs
     {
-        [Option('d', "dir",
+        [Option('i', "input-dir",
             Required = true,
-            HelpText = "Input Csv file Directory that you want to convert.")]
+            HelpText = "Directory path containing the CSV files you want to convert.")]
         public string InputDirectory { get; set; } = null!;
 
-        [Option('d', "dir",
+        [Option('o', "output-dir",
              Required = true,
-             HelpText = "Output ResX file Directory.")]
+             HelpText = "Directory where the output ResX files should be saved.")]
         public string OutputDirectory { get; set; } = null!;
     }
 

@@ -1,0 +1,23 @@
+name: 'ResxConverter'
+description: 'Convert csv to resx'
+branding:
+  icon: activity
+  color: orange
+inputs:
+  input-dir:
+    description:
+      'The root directory containing the CSV files to convert.'
+    required: true
+  output-dir:
+    description:
+      'The root directory for the output ResX files.'
+    required: true
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+  - '-i'
+  - ${{ inputs.input-dir }}
+  - '-o'
+  - ${{ inputs.output-dir }}

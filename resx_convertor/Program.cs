@@ -58,7 +58,6 @@ namespace MyBlueprint.ResxConverter
 
                 }
                 resx.Generate();
-                resx.Close();
             }
             Environment.Exit(0);
             return ValueTask.CompletedTask;
