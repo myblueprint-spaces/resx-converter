@@ -43,7 +43,7 @@ namespace MyBlueprint.ResxConverter
                 if (columns.Length == 3)
                 {
                     string key = $"{columns[0].Trim()}.{columns[1].Trim()}";
-                    string value = columns[2].Trim().TrimStart('N', '\'').TrimEnd('\'');
+                    string value = columns[2].Trim().TrimStart('\'').TrimEnd('\'');
                     keyValuePairs[key] = value;
                 }
             }
