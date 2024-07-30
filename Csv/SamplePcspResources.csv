@@ -6,7 +6,7 @@
  Emails.Server_SignOffRequest, StudentName,Student Name:
  Emails.Server_SignOffRequest, StudentSchool,Student School:
  Emails.Server_SignOffRequest, StudentComment,Student Comment:
- Emails.Server_SignOffRequest,ote,Note: To view additional course information and any guidance messages, please scroll to the bottom of this email.
+ Emails.Server_SignOffRequest, Note,Note: To view additional course information and any guidance messages, please scroll to the bottom of this email.
  Emails.Server_SignOffRequest, CoursesSubmitted,Courses Submitted:
  Emails.Server_SignOffRequest, AlternateCoursesSubmitted,Alternate Courses Submitted:
  Emails.Server_SignOffRequest, CourseSubmissionIssues,Course Submission Issues:
@@ -15,7 +15,7 @@
  Emails.Server_SignOffRequest, RejectInquiry,Dont approve of these course selections?
  Emails.Server_SignOffRequest, RejectInfo,If you reject this request, please follow up with the schools guidance counsellor or the students classroom teacher about next steps.
  Emails.Server_SignOffRequest, SchoolMessages,School Message(s):
- Emails.Server_SignOffRequest,otReturning,Not Returning:
+ Emails.Server_SignOffRequest, NotReturning,Not Returning:
  Emails.Server_SignOffRequest, OtherIssues,Other Issues:
  Emails.Server_SignOffRequest, SlotIssue_MissingPrerequisite,Prerequisite not met
  Emails.Server_SignOffRequest, SlotIssue_MissingCorequisite,Corequisite not met
