@@ -33,27 +33,43 @@ namespace MyBlueprint.ResxConverter
 
         public static ValueTask ConvertToResX(ActionInputs options)
         {
-            var fullPath = Path.Combine(options.InputDirectory, options.InputFileName);
-            Dictionary<string, string> keyValuePairs = new Dictionary<string, string>();
-            var allLines = File.ReadAllLines(fullPath);
-            foreach (var line in allLines)
+            var filesToConvert = new List<string>();
+            filesToConvert.AddRange(Directory.GetFiles(options.InputDirectory, $"*.csv", SearchOption.AllDirectories));
+
+            foreach (var file in filesToConvert)
             {
-                var columns = line.Split(new[] { ',' }, 3);
-                if (columns.Length == 3)
+                var fullPath = Path.Combine(options.InputDirectory, file);
+                Dictionary<string, string> keyValuePairs = new Dictionary<string, string>();
+                var allLines = File.ReadAllLines(fullPath);
+                foreach (var line in allLines)
                 {
-                    string key = $"{columns[0].Trim()}.{columns[1].Trim()}";
-                    string value = columns[2].Trim().TrimStart('\'').TrimEnd('\'');
-                    keyValuePairs[key] = value;
+                    var columns = line.Split(new[] { ',' }, 3);
+                    if (columns.Length == 3)
+                    {
+                        string key = $"{columns[0].Trim()}.{columns[1].Trim()}";
+                        string value = columns[2].Trim().TrimStart('\'').TrimEnd('\'');
+                        keyValuePairs[key] = value;
+                    }
+                }
+
+                var outputFile = file switch
+                {
+                    string f when f.Contains("en-CA") => "ResourceProvider.en-CA.resx",
+                    string f when f.Contains("en-US") => "ResourceProvider.en-US.resx",
+                    string f when f.Contains("fr") => "ResourceProvider.fr.resx",
+                    _ => string.Empty
+                };
+
+                var outputFullPath = Path.Combine(options.OutputDirectory, outputFile);
+                using (var resx = new ResXResourceWriter(outputFullPath))
+                {
+                    foreach (var item in keyValuePairs)
+                    {
+                        resx.AddResource(item.Key, item.Value);
+                    }
                 }
             }
-            var outputFullPath = Path.Combine(options.OutputDirectory, options.OutputFileName);
-            using (var resx = new ResXResourceWriter(outputFullPath))
-            {
-                foreach (var item in keyValuePairs)
-                {
-                    resx.AddResource(item.Key, item.Value);
-                }
-            }
+
             Environment.Exit(0);
             return ValueTask.CompletedTask;
         }

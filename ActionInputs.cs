@@ -12,16 +12,6 @@ namespace MyBlueprint.ResxConverter
              Required = true,
              HelpText = "Directory where the output ResX files should be saved.")]
         public string OutputDirectory { get; set; } = null!;
-
-        [Option('f', "input-fileName",
-            Required = true,
-            HelpText = "The name of the CSV file to convert.")]
-        public string InputFileName { get; set; } = null!;
-
-        [Option('v', "output-fileName",
-           Required = true,
-           HelpText = "The name of the ResX file to create.")]
-        public string OutputFileName { get; set; } = null!;
     }
 
 }
