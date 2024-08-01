@@ -38,9 +38,8 @@ namespace MyBlueprint.ResxConverter
 
             foreach (var file in filesToConvert)
             {
-                var fullPath = Path.Combine(options.InputDirectory, file);
                 Dictionary<string, string> keyValuePairs = new Dictionary<string, string>();
-                var allLines = File.ReadAllLines(fullPath);
+                var allLines = File.ReadAllLines(file);
                 foreach (var line in allLines)
                 {
                     var columns = line.Split(new[] { ',' }, 3);
