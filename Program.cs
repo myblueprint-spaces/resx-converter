@@ -33,8 +33,7 @@ namespace MyBlueprint.ResxConverter
 
         public static ValueTask ConvertToResX(ActionInputs options)
         {
-            var fileName = "PcspResources.csv";
-            var fullPath = Path.Combine(options.InputDirectory, fileName);
+            var fullPath = Path.Combine(options.InputDirectory, options.InputFileName);
             Dictionary<string, string> keyValuePairs = new Dictionary<string, string>();
             var allLines = File.ReadAllLines(fullPath);
             foreach (var line in allLines)
@@ -47,8 +46,7 @@ namespace MyBlueprint.ResxConverter
                     keyValuePairs[key] = value;
                 }
             }
-            var outputFileName = "ResourceProvider.resx";
-            var outputFullPath = Path.Combine(options.OutputDirectory, outputFileName);
+            var outputFullPath = Path.Combine(options.OutputDirectory, options.OutputFileName);
             using (var resx = new ResXResourceWriter(outputFullPath))
             {
                 foreach (var item in keyValuePairs)

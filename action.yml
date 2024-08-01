@@ -12,6 +12,14 @@ inputs:
     description:
       'The root directory for the output ResX files.'
     required: true
+  input-fileName:
+    description:
+      'The name of the CSV file to convert.'
+    required: true
+  output-fileName:
+    description:
+      'The name of the ResX file to create.'
+    required: true
 
 runs:
   using: 'docker'
@@ -21,3 +29,7 @@ runs:
   - ${{ inputs.input-dir }}
   - '-o'
   - ${{ inputs.output-dir }}
+  - '-f'
+  - ${{ inputs.input-fileName }}
+  - '-o'
+  - ${{ inputs.output-fileName }}'
