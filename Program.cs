@@ -38,7 +38,7 @@ namespace MyBlueprint.ResxConverter
             var invalidChars = Regex.Escape(new string(Path.GetInvalidFileNameChars()));
             var invalidRegStr = string.Format(@"([{0}]*\.+$)|([{0}]+)", invalidChars);
 
-            return Regex.Replace(name, invalidRegStr, "_");
+            return Regex.Replace(name, invalidRegStr, "_").Replace(".", "_");
         }
 
         private static async Task ConvertToResX(ActionInputs options)
