@@ -55,7 +55,10 @@ namespace MyBlueprint.ResxConverter
                 using var resx = new ResXResourceWriter(outputFullPath);
                 foreach (var item in resources.Where(r => r.Key.Contains("Server")))
                 {
-                    resx.AddResource(item.Key, item.Value);
+                    foreach (var (key, value) in item.Value)
+                    {
+                        resx.AddResource(key, value);
+                    }
                 }
             }
 
