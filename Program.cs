@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Hosting;
 using System.Resources.NetStandard;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using CommandLine;
@@ -32,6 +33,13 @@ namespace MyBlueprint.ResxConverter
 
             await host.RunAsync();
         }
+        private static string MakeValidFileName(string name)
+        {
+            var invalidChars = Regex.Escape(new string(Path.GetInvalidFileNameChars()));
+            var invalidRegStr = string.Format(@"([{0}]*\.+$)|([{0}]+)", invalidChars);
+
+            return Regex.Replace(name, invalidRegStr, "_");
+        }
 
         private static async Task ConvertToResX(ActionInputs options)
         {
@@ -50,11 +58,12 @@ namespace MyBlueprint.ResxConverter
                 // Set -> Key -> Resource
                 var resources = await JsonSerializer.DeserializeAsync<Dictionary<string, Dictionary<string, string>>>(fs) ?? throw new InvalidOperationException("Could not deserialize file");
 
-                var outputFile = Path.GetFileNameWithoutExtension(file.Path);
-                var outputFullPath = Path.Combine(options.OutputDirectory, Path.ChangeExtension(outputFile, "resx"));
-                using var resx = new ResXResourceWriter(outputFullPath);
                 foreach (var item in resources.Where(r => r.Key.Contains("Server")))
                 {
+                    var fileName = Path.GetFileNameWithoutExtension(file.Path);
+                    var outputFile = MakeValidFileName($"{item.Key}.{fileName}");
+                    var outputFullPath = Path.Combine(options.OutputDirectory, Path.ChangeExtension(outputFile, "resx"));
+                    using var resx = new ResXResourceWriter(outputFullPath);
                     foreach (var (key, value) in item.Value)
                     {
                         resx.AddResource(key, value);
