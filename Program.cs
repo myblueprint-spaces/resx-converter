@@ -39,6 +39,10 @@ namespace MyBlueprint.ResxConverter
             matcher.AddIncludePatterns(options.Input);
 
             var result = matcher.Execute(new DirectoryInfoWrapper(new DirectoryInfo(Environment.CurrentDirectory)));
+            if (!Directory.Exists(options.OutputDirectory))
+            {
+                Directory.CreateDirectory(options.OutputDirectory);
+            }
 
             foreach (var file in result.Files.Where(f => f.Path.EndsWith(".json")))
             {
