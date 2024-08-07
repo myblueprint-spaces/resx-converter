@@ -7,7 +7,7 @@ namespace MyBlueprint.ResxConverter
         [Option('i', "input",
             Required = true,
             HelpText = "Input glob of the JSON files to convert"), PublicAPI]
-        public string[] Input { get; set; } = [];
+        public IEnumerable<string> Input { get; set; } = [];
 
         [Option('o', "output",
              Required = true,
