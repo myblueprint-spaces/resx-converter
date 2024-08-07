@@ -1,17 +1,17 @@
 ﻿using CommandLine;
+using JetBrains.Annotations;
 namespace MyBlueprint.ResxConverter
 {
     public class ActionInputs
     {
-        [Option('i', "input-dir",
+        [Option('i', "input",
             Required = true,
-            HelpText = "Directory path containing the CSV files you want to convert.")]
-        public string InputDirectory { get; set; } = null!;
+            HelpText = "Input glob of the JSON files to convert"), PublicAPI]
+        public string[] Input { get; set; } = [];
 
-        [Option('o', "output-dir",
+        [Option('o', "output",
              Required = true,
-             HelpText = "Directory where the output ResX files should be saved.")]
-        public string OutputDirectory { get; set; } = null!;
+             HelpText = "Directory where the output resource files should be saved."), PublicAPI]
+        public string OutputDirectory { get; set; } = string.Empty;
     }
-
 }

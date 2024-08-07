@@ -1,76 +1,61 @@
 ﻿using Microsoft.Extensions.Hosting;
 using System.Resources.NetStandard;
+using System.Text.Json;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using CommandLine;
+using Microsoft.Extensions.FileSystemGlobbing;
+using Microsoft.Extensions.FileSystemGlobbing.Abstractions;
 using static CommandLine.Parser;
 
 namespace MyBlueprint.ResxConverter
 {
-    public class Program
+    public static class Program
     {
         private static async Task Main(string[] args)
         {
-            using IHost host = Host.CreateDefaultBuilder(args).Build();
-            ParserResult<ActionInputs> parser = Default.ParseArguments<ActionInputs>(() => new(), args);
+            using var host = Host.CreateDefaultBuilder(args).Build();
+            var parser = Default.ParseArguments<ActionInputs>(() => new(), args);
             parser.WithNotParsed(
                 errors =>
                 {
                     host.Services
                         .GetRequiredService<ILoggerFactory>()
-                        .CreateLogger("DotNet.GitHubAction.Program")
+                        .CreateLogger("MyBlueprint.ResxConverter.Program")
                         .LogError("{Errors}", string.Join(
                             Environment.NewLine, errors.Select(error => error.ToString())));
 
                     Environment.Exit(2);
                 });
 
-            parser.WithParsed(
-                options => ConvertToResX(options));
+            await parser.WithParsedAsync(ConvertToResX);
 
             await host.RunAsync();
         }
 
-        public static ValueTask ConvertToResX(ActionInputs options)
+        private static async Task ConvertToResX(ActionInputs options)
         {
-            var filesToConvert = new List<string>();
-            filesToConvert.AddRange(Directory.GetFiles(options.InputDirectory, $"*.csv", SearchOption.AllDirectories));
+            var matcher = new Matcher(StringComparison.OrdinalIgnoreCase);
+            matcher.AddIncludePatterns(options.Input);
 
-            foreach (var file in filesToConvert)
+            var result = matcher.Execute(new DirectoryInfoWrapper(new DirectoryInfo(Environment.CurrentDirectory)));
+
+            foreach (var file in result.Files.Where(f => f.Path.EndsWith(".json")))
             {
-                Dictionary<string, string> keyValuePairs = new Dictionary<string, string>();
-                var allLines = File.ReadAllLines(file);
-                foreach (var line in allLines)
-                {
-                    var columns = line.Split(new[] { ',' }, 3);
-                    if (columns.Length == 3)
-                    {
-                        string key = $"{columns[0].Trim()}.{columns[1].Trim()}";
-                        string value = columns[2].Trim().TrimStart('\'').TrimEnd('\'');
-                        keyValuePairs[key] = value;
-                    }
-                }
+                await using var fs = File.OpenRead(file.Path);
+                // Set -> Key -> Resource
+                var resources = await JsonSerializer.DeserializeAsync<Dictionary<string, Dictionary<string, string>>>(fs) ?? throw new InvalidOperationException("Could not deserialize file");
 
-                var outputFile = file switch
+                var outputFile = Path.GetFileNameWithoutExtension(file.Path);
+                var outputFullPath = Path.Combine(options.OutputDirectory, Path.ChangeExtension(outputFile, "resx"));
+                using var resx = new ResXResourceWriter(outputFullPath);
+                foreach (var item in resources.Where(r => r.Key.Contains("Server")))
                 {
-                    string f when f.Contains("en-CA") => "ResourceProvider.en-CA.resx",
-                    string f when f.Contains("en-US") => "ResourceProvider.en-US.resx",
-                    string f when f.Contains("fr") => "ResourceProvider.fr.resx",
-                    _ => string.Empty
-                };
-
-                var outputFullPath = Path.Combine(options.OutputDirectory, outputFile);
-                using (var resx = new ResXResourceWriter(outputFullPath))
-                {
-                    foreach (var item in keyValuePairs)
-                    {
-                        resx.AddResource(item.Key, item.Value);
-                    }
+                    resx.AddResource(item.Key, item.Value);
                 }
             }
 
             Environment.Exit(0);
-            return ValueTask.CompletedTask;
         }
     }
 }
