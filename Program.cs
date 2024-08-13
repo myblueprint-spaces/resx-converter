@@ -60,8 +60,8 @@ namespace MyBlueprint.ResxConverter
 
                 foreach (var item in resources.Where(r => r.Key.Contains("Server")))
                 {
-                    var fileName = Path.GetFileNameWithoutExtension(file.Path);
-                    var outputFile = MakeValidFileName($"{item.Key}.{fileName}");
+                    var culture = Path.GetFileNameWithoutExtension(file.Path);
+                    var outputFile = $"{MakeValidFileName(item.Key)}.{culture}";
                     var outputFullPath = Path.Combine(options.OutputDirectory, Path.ChangeExtension(outputFile, "resx"));
                     using var resx = new ResXResourceWriter(outputFullPath);
                     foreach (var (key, value) in item.Value)
